@@ -102,17 +102,17 @@ education.display = function(){
   if (education.schools.length > 0 || education.onlineCourses.length > 0) {
     $('#education').append(HTMLschoolStart);
     for (var i = 0, sl = education.schools.length; i < sl; i++) {
-       var formattedName = HTMLschoolName.replace('%data%', education.schools[i].name)
+       var formattedName = HTMLschoolName.replace('%data%', education.schools[i].name);
        $('.education-entry:last').append(formattedName);
-       var formattedLocation = HTMLschoolLocation.replace('%data%', education.schools[i].location)
+       var formattedLocation = HTMLschoolLocation.replace('%data%', education.schools[i].location);
        $('.education-entry:last').append(formattedLocation);
-       var formattedDates = HTMLschoolDates.replace('%data%', education.schools[i].dates)
+       var formattedDates = HTMLschoolDates.replace('%data%', education.schools[i].dates);
        $('.education-entry:last').append(formattedDates);
-       var formattedMajors = HTMLschoolMajor.replace('%data%', education.schools[i].majors)
+       var formattedMajors = HTMLschoolMajor.replace('%data%', education.schools[i].majors);
        $('.education-entry:last').append(formattedMajors);
     }
   }
-}
+};
 education.display();
 
 //work history
@@ -132,7 +132,7 @@ work.display = function() {
       $('.work-entry:last').append(formattedWorkDescription);
     }
   }
-}
+};
 work.display();
 
 //projects
@@ -147,14 +147,14 @@ projects.display = function() {
       var formattedDescription = HTMLprojectTitle.replace("%data%", projects.projects[i].description);
       $(".project-entry:last").append(formattedDescription);
       if (projects.projects[i].images.length > 0){
-        for (image in projects.projects[i].images){
-          var formattedImage = HTMLprojectImage.replace("%data%", projects.projects[i].images[image]);
+        for (var im = 0, pi = projects.images.length; im < pi; im++) {
+        var formattedImage = HTMLprojectImage.replace("%data%", projects.projects[i].images[im]);
           $(".project-entry:last").append(formattedImage);
         }
       }
     }
   }
-}
+};
 projects.display();
 
 $("#mapDiv").append(googleMap);
