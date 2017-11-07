@@ -20,6 +20,7 @@ var education = {
     {
       "name": "Middlesex County College",
       "location": "Edison, NJ",
+      "degree": "N/A",
       "majors": "Business Administration",
       "dates": "1994 - 2000",
       "url": "https://www.middlesexcc.edu/"
@@ -41,7 +42,7 @@ var work = {
 			"employer": "AT&T",
 			"title": "Web Developer",
 			"location": "Piscataway, NJ",
-			"datesWorked": "October 1998 - Present",
+			"dates": "October 1998 - Present",
 			"description": "I began my career at AT&T as a fraud investigator. After 2 years I applied for a job working with the "+
 				"systems support and development group. "+
 				"One of my responsibilities was maintaining our internal website, which eveolved into devdeloping tools and applications "+
@@ -51,7 +52,7 @@ var work = {
 			"employer": "Pathmark",
 			"title": "Front End Manager/Bookkeeper",
 			"location": "Middlesex, NJ",
-			"datesWorked": "October 1990 - 1999",
+			"dates": "October 1990 - 1999",
 			"description": "I began working at this grocery store as a cashier and eventually became a bookkeeper and front end manager."
 		}
   ]
@@ -110,6 +111,8 @@ education.display = function(){
        $('.education-entry:last').append(formattedLocation);
        var formattedDates = HTMLschoolDates.replace('%data%', education.schools[i].dates);
        $('.education-entry:last').append(formattedDates);
+       var formattedDegree = HTMLschoolDegree.replace('%data%', education.schools[i].degree);
+       $('.education-entry:last').append(formattedDegree);
        var formattedMajors = HTMLschoolMajor.replace('%data%', education.schools[i].majors);
        $('.education-entry:last').append(formattedMajors);
     }
@@ -126,7 +129,7 @@ work.display = function() {
       var formattedTitle = HTMLworkTitle.replace('%data%', work.jobs[i].title);
       var formattedEmployerTitle = formattedEmployer + formattedTitle;
       $('.work-entry:last').append(formattedEmployerTitle);
-      var formattedDates = HTMLworkDates.replace("%data%", work.jobs[i].datesWorked);
+      var formattedDates = HTMLworkDates.replace("%data%", work.jobs[i].dates);
       $('.work-entry:last').append(formattedDates);
       var formattedWorkLocation = HTMLworkLocation.replace('%data%', work.jobs[i].location);
       $('.work-entry:last').append(formattedWorkLocation);
