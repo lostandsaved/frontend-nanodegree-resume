@@ -96,7 +96,7 @@ bio.display = function(){
     $("#skills").append(formattedSkills);
    }
   }
-}
+};
 bio.display();
 
 //education
