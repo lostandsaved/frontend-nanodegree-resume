@@ -74,35 +74,37 @@ var projects = {
   ]
 };
 
-var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
-$("#header").prepend(formattedRole);
-var formattedName = HTMLheaderName.replace("%data%", bio.name);
-$("#header").prepend(formattedName);
-var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
-var formattedEmail = HTMLemail.replace("%data%",bio.contacts.email);
-var formattedGithub = HTMLgithub.replace("%data%",bio.contacts.github);
-var formattedLocation = HTMLlocation.replace("%data%",bio.contacts.location);
-$("#topContacts, #footerContacts").append(formattedMobile + formattedEmail + formattedGithub + formattedLocation);
-var formattedWelcomeMsg = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
-$("#header").append(formattedWelcomeMsg);
-var formattedBioPic = HTMLbioPic.replace("%data%", bio.biopic);
-$("#header").append(formattedBioPic);
-
 //bio and skills
-if (bio.skills.length > 0) {
-  $("#header").append(HTMLskillsStart);
-  for (var i = 0, biolen = bio.skills.length; i < biolen; i++) {
-  var formattedSkills = HTMLskills.replace("%data%", bio.skills[i]);
-  $("#skills").append(formattedSkills);
- }
+bio.display = function(){
+  var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
+  $("#header").prepend(formattedRole);
+  var formattedName = HTMLheaderName.replace("%data%", bio.name);
+  $("#header").prepend(formattedName);
+  var formattedMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
+  var formattedEmail = HTMLemail.replace("%data%",bio.contacts.email);
+  var formattedGithub = HTMLgithub.replace("%data%",bio.contacts.github);
+  var formattedLocation = HTMLlocation.replace("%data%",bio.contacts.location);
+  $("#topContacts, #footerContacts").append(formattedMobile + formattedEmail + formattedGithub + formattedLocation);
+  var formattedWelcomeMsg = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
+  $("#header").append(formattedWelcomeMsg);
+  var formattedBioPic = HTMLbioPic.replace("%data%", bio.biopic);
+  $("#header").append(formattedBioPic);
+  if (bio.skills.length > 0) {
+    $("#header").append(HTMLskillsStart);
+    for (var i = 0, biolen = bio.skills.length; i < biolen; i++) {
+    var formattedSkills = HTMLskills.replace("%data%", bio.skills[i]);
+    $("#skills").append(formattedSkills);
+   }
+  }
 }
+bio.display();
 
 //education
 education.display = function(){
   if (education.schools.length > 0 || education.onlineCourses.length > 0) {
     $('#education').append(HTMLschoolStart);
     for (var i = 0, sl = education.schools.length; i < sl; i++) {
-       var formattedName = HTMLschoolName.replace('%data%', education.schools[i].name);
+      var formattedName = HTMLschoolName.replace('%data%', education.schools[i].name);
        $('.education-entry:last').append(formattedName);
        var formattedLocation = HTMLschoolLocation.replace('%data%', education.schools[i].location);
        $('.education-entry:last').append(formattedLocation);
@@ -137,23 +139,23 @@ work.display();
 
 //projects
 projects.display = function() {
-  if (projects.projects.length > 0) {
-    $("#projects").append(HTMLprojectStart);
-    for (var i = 0, pp = projects.projects.length; i < pp; i++) {
+	if (projects.projects.length > 0) {
+		$("#projects").append(HTMLprojectStart);
+		for (var i = 0, pp = projects.projects.length; i < pp; i++) {
       var formattedTitle = HTMLprojectTitle.replace("%data%", projects.projects[i].title);
-      $(".project-entry:last").append(formattedTitle);
-      var formattedDates = HTMLprojectTitle.replace("%data%", projects.projects[i].dates);
-      $(".project-entry:last").append(formattedDates);
-      var formattedDescription = HTMLprojectTitle.replace("%data%", projects.projects[i].description);
-      $(".project-entry:last").append(formattedDescription);
-      if (projects.projects[i].images.length > 0){
-        for (var im = 0, pi = projects.images.length; im < pi; im++) {
-        var formattedImage = HTMLprojectImage.replace("%data%", projects.projects[i].images[im]);
-          $(".project-entry:last").append(formattedImage);
-        }
-      }
-    }
-  }
+			$(".project-entry:last").append(formattedTitle);
+			var formattedDates = HTMLprojectTitle.replace("%data%", projects.projects[i].dates);
+			$(".project-entry:last").append(formattedDates);
+			var formattedDescription = HTMLprojectTitle.replace("%data%", projects.projects[i].description);
+			$(".project-entry:last").append(formattedDescription);
+			if (projects.projects[i].images.length > 0) {
+        for (var pi = 0, p = projects.projects[i].images.length; pi < p; pi++) {
+				var formattedImage = HTMLprojectImage.replace("%data%", projects.projects[i].images[pi]);
+				$(".project-entry:last").append(formattedImage);
+				}
+			}
+		}
+	}
 };
 projects.display();
 
