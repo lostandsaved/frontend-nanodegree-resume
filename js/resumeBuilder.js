@@ -21,7 +21,9 @@ var education = {
       "name": "Middlesex County College",
       "location": "Edison, NJ",
       "degree": "N/A",
-      "majors": "Business Administration",
+      "majors": [
+        "Business Administration"
+      ],
       "dates": "1994 - 2000",
       "url": "https://www.middlesexcc.edu/"
     }
@@ -113,8 +115,12 @@ education.display = function(){
        $('.education-entry:last').append(formattedDates);
        var formattedDegree = HTMLschoolDegree.replace('%data%', education.schools[i].degree);
        $('.education-entry:last').append(formattedDegree);
-       var formattedMajors = HTMLschoolMajor.replace('%data%', education.schools[i].majors);
-       $('.education-entry:last').append(formattedMajors);
+       if (education.schools[i].majors.length > 0) {
+         for (var ma = 0, e = education.schools[i].majors.length; ma < e; ma++) {
+ 				var formattedMajors = HTMLschoolMajor.replace("%data%", education.schools[i].majors[ma]);
+ 				$('.education-entry:last').append(formattedMajors);
+ 				}
+ 			}
     }
   }
 };
